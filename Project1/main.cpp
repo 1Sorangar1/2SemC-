@@ -4,16 +4,20 @@
 
 using namespace std; 
 
-int main() {
+int main(int const arg1, char** arg2) {
     std::string s;
-    std::ifstream file("input.txt"); 
 
+    std::cout << arg1 << " " << arg2[2] << std::endl;
+    std::cout << "It worked!" << endl;
 
-    while (std::getline(file, s)) {
+    std::ifstream input;
+    input.open(arg2[2]);
+
+    while (std::getline(input, s)) {
         cout << s << endl;
     }
 
-    file.close();
-
+    
+    input.close();
     return 0;
 }
