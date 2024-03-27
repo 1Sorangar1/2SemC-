@@ -7,7 +7,7 @@
 #include <cstdlib>
 
 using namespace std; 
-//Проблема в неправильном переводе из чара в инт длины строки + если длина больше всех слов, то ниче не выводится. Куда въебать галочку для проверки вывода?? где обнулять??
+
 int main(int const argc, char* argv[]) {
     //Проверка на работоспособность
 
@@ -16,8 +16,8 @@ int main(int const argc, char* argv[]) {
         return 1;
     }
 
-    std::cout << argc << " " << argv[1] << " " << argv[2] << std::endl;
-    std::cout << "it worked!" << endl;
+    //std::cout << argc << " " << argv[1] << " " << argv[2] << std::endl;
+    //std::cout << "it worked!" << endl;
 
 
     //открытие файла и подготовка необходимых переменных
@@ -31,8 +31,8 @@ int main(int const argc, char* argv[]) {
 
     std::string readString;
     std::vector<std::string> current_string;
+    std::string result;
     int length = std::atoi(argv[1]);
-    std::cout << length << endl;
     int spaces;
 
     //Начиныаем считывание строк
@@ -41,13 +41,9 @@ int main(int const argc, char* argv[]) {
         //Делим текущую строку на слова
         std::istringstream iss(readString);
         std::vector<std::string> words((std::istream_iterator<std::string>(iss)), std::istream_iterator<std::string>());
-        std::string result;
 
         for (const auto& word : words) {
             //Прорабатываем случай того, что слово слишком большое 
-            //if (word == "my") {
-            //    std::cout << word.size() << " " << length << endl;
-            //}
             if (word.size() > length) std::cerr << "Word " << word << " is too long to be placed on a line" << endl;
 
             //Прорабатываем случай того, что слово уже не влазит в строчку (1 вставляем для пробела нового)
@@ -67,11 +63,16 @@ int main(int const argc, char* argv[]) {
             }
         }
 
-        //Вывод последней незаполненной строки
-        //if (result.size() > 0) {
 
-        //}
+    }
 
+    //Вывод последней незаполненной строки
+    if (result.size() > 0) {
+        spaces = (length - (int)result.size()) / 2;
+        for (int i = 0; i < spaces; i++) {
+            std::cout << " ";
+        }
+        std::cout << result << endl;
     }
 
 
