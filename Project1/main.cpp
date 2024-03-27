@@ -1,52 +1,58 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <string> 
 #include <fstream> 
 #include <vector>
 #include <iterator>
 #include <sstream>
+#include <cstdlib>
 
 using namespace std; 
+//РџСЂРѕР±Р»РµРјР° РІ РЅРµРїСЂР°РІРёР»СЊРЅРѕРј РїРµСЂРµРІРѕРґРµ РёР· С‡Р°СЂР° РІ РёРЅС‚ РґР»РёРЅС‹ СЃС‚СЂРѕРєРё + РµСЃР»Рё РґР»РёРЅР° Р±РѕР»СЊС€Рµ РІСЃРµС… СЃР»РѕРІ, С‚Рѕ РЅРёС‡Рµ РЅРµ РІС‹РІРѕРґРёС‚СЃСЏ. РљСѓРґР° РІСЉРµР±Р°С‚СЊ РіР°Р»РѕС‡РєСѓ РґР»СЏ РїСЂРѕРІРµСЂРєРё РІС‹РІРѕРґР°?? РіРґРµ РѕР±РЅСѓР»СЏС‚СЊ??
+int main(int const argc, char* argv[]) {
+    //РџСЂРѕРІРµСЂРєР° РЅР° СЂР°Р±РѕС‚РѕСЃРїРѕСЃРѕР±РЅРѕСЃС‚СЊ
 
-int main(int const arg1, char** arg2) {
-    //Проверка на работоспособность
+    if (argc < 3) {
+        std::cerr << "Incorrect input data" << endl;
+        return 1;
+    }
 
-    //std::cout << arg1 << " " << arg2[2] << std::endl;
-    //std::cout << "It worked!" << endl;
+    std::cout << argc << " " << argv[1] << " " << argv[2] << std::endl;
+    std::cout << "it worked!" << endl;
 
 
-    //открытие файла и подготовка необходимых переменных
+    //РѕС‚РєСЂС‹С‚РёРµ С„Р°Р№Р»Р° Рё РїРѕРґРіРѕС‚РѕРІРєР° РЅРµРѕР±С…РѕРґРёРјС‹С… РїРµСЂРµРјРµРЅРЅС‹С…
     std::ifstream input;
-    input.open(arg2[2]);
+    input.open(argv[2]);
 
     if (!input) {
-        std::cerr << "Errors with reading file " << arg2[2] << endl;
+        std::cerr << "Errors with reading file " << argv[2] << endl;
         return 1;
     }
 
     std::string readString;
     std::vector<std::string> current_string;
-    int length = arg1;
+    int length = std::atoi(argv[1]);
+    std::cout << length << endl;
     int spaces;
 
-    //Начиныаем считывание строк
+    //РќР°С‡РёРЅС‹Р°РµРј СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂРѕРє
     while (std::getline(input, readString)) {
         //std::cout << readString << endl;
-        //Делим текущую строку на слова
+        //Р”РµР»РёРј С‚РµРєСѓС‰СѓСЋ СЃС‚СЂРѕРєСѓ РЅР° СЃР»РѕРІР°
         std::istringstream iss(readString);
         std::vector<std::string> words((std::istream_iterator<std::string>(iss)), std::istream_iterator<std::string>());
         std::string result;
 
-
         for (const auto& word : words) {
-            //Прорабатываем случай того, что слово слишком большое 
-            if (word == "my") {
-                std::cout << word.size() << " " << length << endl;
-            }
+            //РџСЂРѕСЂР°Р±Р°С‚С‹РІР°РµРј СЃР»СѓС‡Р°Р№ С‚РѕРіРѕ, С‡С‚Рѕ СЃР»РѕРІРѕ СЃР»РёС€РєРѕРј Р±РѕР»СЊС€РѕРµ 
+            //if (word == "my") {
+            //    std::cout << word.size() << " " << length << endl;
+            //}
             if (word.size() > length) std::cerr << "Word " << word << " is too long to be placed on a line" << endl;
 
-            //Прорабатываем случай того, что слово уже не влазит в строчку (1 вставляем для пробела нового)
+            //РџСЂРѕСЂР°Р±Р°С‚С‹РІР°РµРј СЃР»СѓС‡Р°Р№ С‚РѕРіРѕ, С‡С‚Рѕ СЃР»РѕРІРѕ СѓР¶Рµ РЅРµ РІР»Р°Р·РёС‚ РІ СЃС‚СЂРѕС‡РєСѓ (1 РІСЃС‚Р°РІР»СЏРµРј РґР»СЏ РїСЂРѕР±РµР»Р° РЅРѕРІРѕРіРѕ)
             else if (result.size() + word.size() +1 > length) {
-                spaces = (length - result.size()) / 2;
+                spaces = (length - (int)result.size())/2;
                 for (int i = 0; i < spaces; i++) {
                     std::cout << " ";
                 }
@@ -54,14 +60,20 @@ int main(int const arg1, char** arg2) {
                 result.clear();
                 result+=word;
             }
-            //Если слово вмещается, добавляем проблем перед ним и само слово в текущую строку
+            //Р•СЃР»Рё СЃР»РѕРІРѕ РІРјРµС‰Р°РµС‚СЃСЏ, РґРѕР±Р°РІР»СЏРµРј РїСЂРѕР±Р»РµРј РїРµСЂРµРґ РЅРёРј Рё СЃР°РјРѕ СЃР»РѕРІРѕ РІ С‚РµРєСѓС‰СѓСЋ СЃС‚СЂРѕРєСѓ
             else {
                 result += " ";
                 result += word;
             }
         }
 
+        //Р’С‹РІРѕРґ РїРѕСЃР»РµРґРЅРµР№ РЅРµР·Р°РїРѕР»РЅРµРЅРЅРѕР№ СЃС‚СЂРѕРєРё
+        //if (result.size() > 0) {
+
+        //}
+
     }
+
 
     input.close();
 
