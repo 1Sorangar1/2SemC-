@@ -1,12 +1,6 @@
 #include <iostream>
 #include <C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h>
 
-
-struct Trail {
-    int x, y;
-    int radius;
-};
-
 SDL_Window* window = NULL;
 SDL_Renderer* renderer = NULL;
 
@@ -62,12 +56,10 @@ int main(int argc, char* args[]) {
 
     bool run = true;
     SDL_Event e;
-    //int x = SCREEN_WIDTH / 2;
-    //int y = SCREEN_HEIGHT / 2;
-    //std::vector<Trail> trails;
     Vector move = Vector(0,0);
     Vector start(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
     Point point = Point(start, CIRCLE_RADIUS);
+    std::vector<Point> trails;
 
     // Главный цикл программы
     while (run) {
@@ -88,21 +80,21 @@ int main(int argc, char* args[]) {
         move.x = 0;
         move.y = 0;
         // Добавление новой позиции в вектор следов
-       // trails.push_back({ x, y, CIRCLE_RADIUS });
+        trails.emplace_back(point);
 
         // Очистка экрана
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
 
-        //// Рисование следов
-        //for (auto& trail : trails) {
-        //    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        //    point.drawCircle(renderer, point, CIRCLE_RADIUS);
+        // Рисование следов
+        for (auto& trail : trails) {
+            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+            trail.drawCircle(renderer, trail);
 
-        //    if (trail.radius > 0) {
-        //        trail.radius--;
-        //    }
-        //}
+            if (trail.radius > 0) {
+                trail.radius--;
+            }
+        }
 
         //// Удаление следов 
         //trails.erase(std::remove_if(trails.begin(), trails.end(), [](Trail& trail) {

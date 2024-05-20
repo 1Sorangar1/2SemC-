@@ -62,7 +62,7 @@ class Point {
 public:
 	Vector position;
     float radius;
-    //std::vector<Vector> trails;
+    std::vector<Vector> trails;
     Point() {};
     Point(Vector coordinates, float _radius);
     void drawCircle(SDL_Renderer* renderer, Point point);
