@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 using namespace std;
 
 class Vector {
@@ -6,11 +7,13 @@ public:
     float x;
     float y;
 
+
+    Vector() {};
     Vector(float _x, float _y);
-    float x_pos();
-    float y_pos();
-    void set_x(int _x);
-    void set_y(int _y);
+    float xPos();
+    float yPos();
+    void setX(int _x);
+    void setY(int _y);
 
     Vector operator+(Vector& sum_vector) { 
         return Vector(x + sum_vector.x, y + sum_vector.y); 
@@ -24,19 +27,19 @@ Vector::Vector(float _x, float _y) {
 }
 
 
-float Vector::x_pos() {
+float Vector::xPos() {
     return x;
 }
 
-float Vector::y_pos() {
+float Vector::yPos() {
     return y;
 }
 
-void Vector::set_x(int _x) {
+void Vector::setX(int _x) {
     x = _x;
 }
 
-void Vector::set_y(int _y) {
+void Vector::setY(int _y) {
     y = _y;
 }
 

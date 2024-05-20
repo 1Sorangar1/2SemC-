@@ -1,6 +1,6 @@
 #include <iostream>
 #include <C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h>
-#include <vector>
+
 
 
 
@@ -81,6 +81,8 @@ int main(int argc, char* args[]) {
     int y = SCREEN_HEIGHT / 2;
     std::vector<Trail> trails;
     Vector move(0,0);
+    Vector start(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
+    Point point(start);
 
     // Главный цикл программы
     while (run) {
