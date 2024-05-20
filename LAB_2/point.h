@@ -61,26 +61,28 @@ const int SPEED = 5;
 class Point {
 public:
 	Vector position;
+    float radius;
     //std::vector<Vector> trails;
     Point() {};
-    Point(Vector coordinates);
-    void drawCircle(SDL_Renderer* renderer, Point point, float radius);
+    Point(Vector coordinates, float _radius);
+    void drawCircle(SDL_Renderer* renderer, Point point);
     void movePoint(Vector movement);
 	
 };
 
-Point::Point(Vector coordinates) {
+Point::Point(Vector coordinates, float _radius) {
     position.x = coordinates.x;
     position.y = coordinates.y;
+    radius = _radius;
 }
 
-void Point::drawCircle(SDL_Renderer* renderer, Point point, float radius) {
+void Point::drawCircle(SDL_Renderer* renderer, Point point) {
     int dx, dy;
-    for (int w = 0; w < radius * 2; w++) {
-        for (int h = 0; h < radius * 2; h++) {
-            dx = radius - w;
-            dy = radius - h; 
-            if ((dx * dx + dy * dy) <= (radius * radius)) {
+    for (int w = 0; w < point.radius * 2; w++) {
+        for (int h = 0; h < point.radius * 2; h++) {
+            dx = point.radius - w;
+            dy = point.radius - h;
+            if ((dx * dx + dy * dy) <= (point.radius * point.radius)) {
                 SDL_RenderDrawPoint(renderer, point.position.x + dx, point.position.y + dy);
             }
         }

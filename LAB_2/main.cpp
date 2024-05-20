@@ -64,10 +64,10 @@ int main(int argc, char* args[]) {
     SDL_Event e;
     //int x = SCREEN_WIDTH / 2;
     //int y = SCREEN_HEIGHT / 2;
-    std::vector<Trail> trails;
+    //std::vector<Trail> trails;
     Vector move = Vector(0,0);
     Vector start(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-    Point point = Point(start);
+    Point point = Point(start, CIRCLE_RADIUS);
 
     // Главный цикл программы
     while (run) {
@@ -111,7 +111,7 @@ int main(int argc, char* args[]) {
 
         // Рисование круга
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        point.drawCircle(renderer, point, CIRCLE_RADIUS);
+        point.drawCircle(renderer, point);
         SDL_RenderPresent(renderer);
     }
 
