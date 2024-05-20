@@ -57,16 +57,21 @@
 const int SCREEN_WIDTH = 800, SCREEN_HEIGHT = 600;
 const int CIRCLE_RADIUS = 20;
 const int SPEED = 5;
+const int DISSAPEAR_SPEED = 1;
 
 class Point {
-public:
-	Vector position;
+private:
+    Vector position;
     float radius;
-    std::vector<Vector> trails;
+public:
     Point() {};
     Point(Vector coordinates, float _radius);
     void drawCircle(SDL_Renderer* renderer, Point point);
     void movePoint(Vector movement);
+    Vector getPosition();
+    float getRadius();
+    void setRadius(float _r);
+    void setPosition(Vector coordinates);
 	
 };
 
@@ -74,6 +79,23 @@ Point::Point(Vector coordinates, float _radius) {
     position.x = coordinates.x;
     position.y = coordinates.y;
     radius = _radius;
+}
+
+Vector Point::getPosition() {
+    return position;
+}
+
+float Point::getRadius() {
+    return radius;
+}
+
+void Point::setRadius(float _r) {
+    radius = _r;
+}
+
+void Point::setPosition(Vector coordinates) {
+    position.x = coordinates.x;
+    position.y = coordinates.y;
 }
 
 void Point::drawCircle(SDL_Renderer* renderer, Point point) {

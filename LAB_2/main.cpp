@@ -44,9 +44,6 @@ void quit() {
 }
 
 
-
-// Функция для рисования круга
-
 int main(int argc, char* args[]) {
     
     if (!init()) {
@@ -91,15 +88,15 @@ int main(int argc, char* args[]) {
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             trail.drawCircle(renderer, trail);
 
-            if (trail.radius > 0) {
-                trail.radius--;
+            if (trail.getRadius() > 0) {
+                trail.setRadius(trail.getRadius()-DISSAPEAR_SPEED);
             }
         }
 
-        //// Удаление следов 
-        //trails.erase(std::remove_if(trails.begin(), trails.end(), [](Trail& trail) {
-        //    return trail.radius == 0;
-        //    }), trails.end());
+        // Удаление следов 
+        trails.erase(std::remove_if(trails.begin(), trails.end(), [](Point& trail) {
+            return trail.getRadius() == 0;
+            }), trails.end());
 
         // Рисование круга
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
