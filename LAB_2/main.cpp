@@ -2,9 +2,6 @@
 #include <C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h>
 
 
-
-
-// Структура для хранения информации о положении и времени жизни следа
 struct Trail {
     int x, y;
     int radius;
@@ -55,18 +52,6 @@ void quit() {
 
 
 // Функция для рисования круга
-void drawCircle(SDL_Renderer* renderer, int centerX, int centerY, int radius) {
-    int dx, dy;
-    for (int w = 0; w < radius * 2; w++) {
-        for (int h = 0; h < radius * 2; h++) {
-            dx = radius - w;  // horizontal offset
-            dy = radius - h;  // vertical offset
-            if ((dx * dx + dy * dy) <= (radius * radius)) {
-                SDL_RenderDrawPoint(renderer, centerX + dx, centerY + dy);
-            }
-        }
-    }
-}
 
 int main(int argc, char* args[]) {
     
@@ -77,12 +62,12 @@ int main(int argc, char* args[]) {
 
     bool run = true;
     SDL_Event e;
-    int x = SCREEN_WIDTH / 2;
-    int y = SCREEN_HEIGHT / 2;
+    //int x = SCREEN_WIDTH / 2;
+    //int y = SCREEN_HEIGHT / 2;
     std::vector<Trail> trails;
-    Vector move(0,0);
+    Vector move = Vector(0,0);
     Vector start(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
-    Point point(start);
+    Point point = Point(start);
 
     // Главный цикл программы
     while (run) {
@@ -91,39 +76,42 @@ int main(int argc, char* args[]) {
             if (e.type == SDL_QUIT) run = false;
             else if (e.type == SDL_KEYDOWN) {
                 switch (e.key.keysym.sym) {
-                case SDLK_UP: y -= SPEED; break;
-                case SDLK_DOWN: y += SPEED; break;
-                case SDLK_LEFT: x -= SPEED; break;
-                case SDLK_RIGHT: x += SPEED; break;
+                case SDLK_UP: move.y -= SPEED; break;
+                case SDLK_DOWN: move.y += SPEED; break;
+                case SDLK_LEFT: move.x -= SPEED; break;
+                case SDLK_RIGHT: move.x += SPEED; break;
                 }
             }
         }
 
+        point.movePoint(move);
+        move.x = 0;
+        move.y = 0;
         // Добавление новой позиции в вектор следов
-        trails.push_back({ x, y, CIRCLE_RADIUS });
+       // trails.push_back({ x, y, CIRCLE_RADIUS });
 
         // Очистка экрана
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
 
-        // Рисование следов
-        for (auto& trail : trails) {
-            SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-            drawCircle(renderer, trail.x, trail.y, trail.radius);
+        //// Рисование следов
+        //for (auto& trail : trails) {
+        //    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        //    point.drawCircle(renderer, point, CIRCLE_RADIUS);
 
-            if (trail.radius > 0) {
-                trail.radius--;
-            }
-        }
+        //    if (trail.radius > 0) {
+        //        trail.radius--;
+        //    }
+        //}
 
-        // Удаление следов 
-        trails.erase(std::remove_if(trails.begin(), trails.end(), [](Trail& trail) {
-            return trail.radius == 0;
-            }), trails.end());
+        //// Удаление следов 
+        //trails.erase(std::remove_if(trails.begin(), trails.end(), [](Trail& trail) {
+        //    return trail.radius == 0;
+        //    }), trails.end());
 
         // Рисование круга
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-        drawCircle(renderer, x, y, CIRCLE_RADIUS);
+        point.drawCircle(renderer, point, CIRCLE_RADIUS);
         SDL_RenderPresent(renderer);
     }
 

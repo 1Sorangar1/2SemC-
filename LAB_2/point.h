@@ -65,12 +65,13 @@ public:
     Point() {};
     Point(Vector coordinates);
     void drawCircle(SDL_Renderer* renderer, Point point, float radius);
-    void moveVector(Vector movement);
+    void movePoint(Vector movement);
 	
 };
 
 Point::Point(Vector coordinates) {
-
+    position.x = coordinates.x;
+    position.y = coordinates.y;
 }
 
 void Point::drawCircle(SDL_Renderer* renderer, Point point, float radius) {
@@ -86,7 +87,7 @@ void Point::drawCircle(SDL_Renderer* renderer, Point point, float radius) {
     }
 }
 
-void Point::moveVector(Vector movement) {
+void Point::movePoint(Vector movement) {
     position = position + movement;
 }
 
