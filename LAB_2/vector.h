@@ -3,13 +3,13 @@
 using namespace std;
 
 class Vector {
-public:
+private:
     float x;
     float y;
-
-
+public:
     Vector() {};
     Vector(float _x, float _y);
+
     float xPos();
     float yPos();
     void setX(int _x);
@@ -18,7 +18,6 @@ public:
     Vector operator+(Vector& sum_vector) { 
         return Vector(x + sum_vector.x, y + sum_vector.y); 
     }
-
 };
 
 Vector::Vector(float _x, float _y) {
@@ -42,20 +41,3 @@ void Vector::setX(int _x) {
 void Vector::setY(int _y) {
     y = _y;
 }
-
-//using namespace std;
-//
-//class Vector {
-//public:
-//    float x, y;
-//    Vector(float p_x, float p_y);
-//    Vector operator+(Vector other_vector) {
-//        return Vector(x + other_vector.x, y + other_vector.y);
-//    }
-//
-//};
-//
-//Vector::Vector(float p_x, float p_y) {
-//    x = p_x;
-//    y = p_y;
-//}

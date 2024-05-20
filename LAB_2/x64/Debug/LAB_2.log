@@ -1,8 +1,16 @@
 ﻿  main.cpp
-C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\vector.h(39,9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\vector.h(43,9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h(105,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h(106,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h(108,87): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h(108,64): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\vector.h(38,9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\vector.h(42,9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h(28,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h(29,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h(46,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h(47,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h(54,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h(55,31): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h(57,97): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h(57,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\main.cpp(68,53): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\main.cpp(69,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\main.cpp(70,55): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\main.cpp(71,56): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
   LAB_2.vcxproj -> C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\x64\Debug\LAB_2.exe
