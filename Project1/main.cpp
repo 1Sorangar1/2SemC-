@@ -16,9 +16,6 @@ int main(int const argc, char* argv[]) {
         return 1;
     }
 
-    //std::cout << argc << " " << argv[1] << " " << argv[2] << std::endl;
-    //std::cout << "it worked!" << endl;
-
 
     //открытие файла и подготовка необходимых переменных
     std::ifstream input;
@@ -37,7 +34,7 @@ int main(int const argc, char* argv[]) {
 
     //Начиныаем считывание строк
     while (std::getline(input, readString)) {
-        //std::cout << readString << endl;
+
         //Делим текущую строку на слова
         std::istringstream iss(readString);
         std::vector<std::string> words((std::istream_iterator<std::string>(iss)), std::istream_iterator<std::string>());

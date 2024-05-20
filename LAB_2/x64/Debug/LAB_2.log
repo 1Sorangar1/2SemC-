@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\vector.h(36,9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\vector.h(40,9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  LAB_2.vcxproj -> C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\x64\Debug\LAB_2.exe
