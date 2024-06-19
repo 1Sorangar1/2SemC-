@@ -27,8 +27,26 @@ public:
 class Object {
 private:
     Point point;
+public:
+    Object() {};
+    Object(Point coordinates);
+
+    void Trail(SDL_Renderer* renderer, Object trail);
 };
 
+Object::Object(Point coordinates) {
+    point.setPosition(coordinates.getPosition());
+    point.setRadius(coordinates.getRadius());
+}
+
+void Object::Trail(SDL_Renderer* renderer, Object trail) {
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    trail.point.drawCircle(renderer, trail.point);
+
+    if (trail.point.getRadius() > 0) {
+        trail.point.setRadius(trail.point.getRadius() - DISSAPEAR_SPEED);
+    }
+}
 
 Point::Point(Vector coordinates, float _radius) {
     position.setX(coordinates.xPos());
