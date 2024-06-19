@@ -19,10 +19,16 @@ public:
     float getRadius();
     void setRadius(float _r);
     void setPosition(Vector coordinates);
-	
+
     void drawCircle(SDL_Renderer* renderer, Point point);
     void movePoint(Vector movement);
 };
+
+class Object {
+private:
+    Point point;
+};
+
 
 Point::Point(Vector coordinates, float _radius) {
     position.setX(coordinates.xPos());
@@ -63,4 +69,3 @@ void Point::drawCircle(SDL_Renderer* renderer, Point point) {
 void Point::movePoint(Vector movement) {
     position = position + movement;
 }
-

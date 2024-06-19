@@ -1,4 +1,4 @@
-#include <iostream>
+п»ї#include <iostream>
 #include <C:\Users\User\source\repos\2SemC++\2SemC-\LAB_2\point.h>
 
 SDL_Window* window = NULL;
@@ -45,7 +45,7 @@ void quit() {
 
 
 int main(int argc, char* args[]) {
-    
+
     if (!init()) {
         quit();
         return 1;
@@ -53,14 +53,14 @@ int main(int argc, char* args[]) {
 
     bool run = true;
     SDL_Event e;
-    Vector move = Vector(0,0);
+    Vector move = Vector(0, 0);
     Vector start(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2);
     Point point = Point(start, CIRCLE_RADIUS);
     std::vector<Point> trails;
 
-    // Главный цикл программы
+    // ГѓГ«Г ГўГ­Г»Г© Г¶ГЁГЄГ« ГЇГ°Г®ГЈГ°Г Г¬Г¬Г»
     while (run) {
-        // Обработка событий
+        // ГЋГЎГ°Г ГЎГ®ГІГЄГ  Г±Г®ГЎГ»ГІГЁГ©
         while (SDL_PollEvent(&e) != 0) {
             if (e.type == SDL_QUIT) run = false;
             else if (e.type == SDL_KEYDOWN) {
@@ -77,29 +77,29 @@ int main(int argc, char* args[]) {
         move.setX(0);
         move.setY(0);
 
-        //Добавление новой позиции в вектор следов
+        //Г„Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ Г­Г®ГўГ®Г© ГЇГ®Г§ГЁГ¶ГЁГЁ Гў ГўГҐГЄГІГ®Г° Г±Г«ГҐГ¤Г®Гў
         trails.emplace_back(point);
 
-        //Очистка экрана
+        //ГЋГ·ГЁГ±ГІГЄГ  ГЅГЄГ°Г Г­Г 
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
         SDL_RenderClear(renderer);
 
-        //Рисование следов
+        //ГђГЁГ±Г®ГўГ Г­ГЁГҐ Г±Г«ГҐГ¤Г®Гў
         for (auto& trail : trails) {
             SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
             trail.drawCircle(renderer, trail);
 
             if (trail.getRadius() > 0) {
-                trail.setRadius(trail.getRadius()-DISSAPEAR_SPEED);
+                trail.setRadius(trail.getRadius() - DISSAPEAR_SPEED);
             }
         }
 
-        //Удаление следов 
+        //Г“Г¤Г Г«ГҐГ­ГЁГҐ Г±Г«ГҐГ¤Г®Гў 
         trails.erase(std::remove_if(trails.begin(), trails.end(), [](Point& trail) {
             return trail.getRadius() == 0;
             }), trails.end());
 
-        //Рисование круга
+        //ГђГЁГ±Г®ГўГ Г­ГЁГҐ ГЄГ°ГіГЈГ 
         SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
         point.drawCircle(renderer, point);
         SDL_RenderPresent(renderer);
@@ -109,4 +109,3 @@ int main(int argc, char* args[]) {
 
     return 0;
 }
-

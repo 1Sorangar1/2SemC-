@@ -15,8 +15,8 @@ public:
     void setX(int _x);
     void setY(int _y);
 
-    Vector operator+(Vector& sum_vector) { 
-        return Vector(x + sum_vector.x, y + sum_vector.y); 
+    Vector operator+(Vector& sum_vector) {
+        return Vector(x + sum_vector.x, y + sum_vector.y);
     }
 };
 

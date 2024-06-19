@@ -1,0 +1,9 @@
+﻿  main.cpp
+main.obj : error LNK2019: unresolved external symbol glutInit referenced in function main
+main.obj : error LNK2019: unresolved external symbol glutInitWindowPosition referenced in function main
+main.obj : error LNK2019: unresolved external symbol glutInitWindowSize referenced in function main
+main.obj : error LNK2019: unresolved external symbol glutMainLoop referenced in function main
+main.obj : error LNK2019: unresolved external symbol glutCreateWindow referenced in function main
+main.obj : error LNK2019: unresolved external symbol glutDisplayFunc referenced in function main
+glut32.lib : warning LNK4272: library machine type 'x86' conflicts with target machine type 'x64'
+C:\Users\User\source\repos\2SemC++\2SemC-\LAB_3\Project1\x64\Debug\Project1.exe : fatal error LNK1120: 6 unresolved externals
